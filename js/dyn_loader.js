@@ -103,7 +103,7 @@ fetch_cat=()=>{
 }
 
 catagory_injector=(a,b="")=>{
-	client_item_holder='<img class="cat_box_img" src="'+b+'" alt="'+a+'"></img>'
+	client_item_holder='<img class="cat_box_img" loading="lazy" src="'+b+'" alt="'+a+'"></img>'
 	client_item_holder=client_item_holder+'<label class="cat_name"><br>'+a+'</label>'
 
 	y=$('<div class="cat_box" id="'+a+'" onclick="fetch_by_cat(this.id)"></div>')
@@ -178,7 +178,7 @@ item_injector=(a,b,c,d,e,f,g)=>{
 	let b_name=a+"_sign_btn"
 	item_id=item_id+"_item"
 	if (b.length>=24) {b=b.slice(0,20);b=b+"..."} //The string ... slicer
-	client_item_holder='<img class="item_box_img" src="'+f+'"></img>'
+	client_item_holder='<img class="item_box_img" loading="lazy" src="'+f+'"></img>'
 	client_item_holder=client_item_holder+'<label name="'+item_id+'"><br>'+b+'</label><label id="'+rate_holder+'"><br>₹'+e+'</label>'
 	client_item_holder+='<div class="slider_div" >'
 	client_item_holder+='<select class="qty_drop" name="'+drop_id+'"><option value="'+a+'_val_'+e+parent_id+'">'+g+'</option></select>'

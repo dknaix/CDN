@@ -12,6 +12,7 @@ $( document ).ready(function() {
 	// getBrowser()
 	// fetch_items()
 
+
 	$('select').on('change', function() { //evt listner for on change for select
 		// alert( "Will re calc val" );
 		fetch_items_from_cart(true) //fetch and update new qty
@@ -31,6 +32,10 @@ $( document ).ready(function() {
 		else {global_eligible=false;$(".eligibility_text").html("Your Order is <b>Not Eligible</b> for Home Delivery")}
 	});
 
+	scroll_view('main_header_scroll_id')
+
+	console.log("removed scroll")
+	$(window).off('scroll');
 
 });
 
@@ -376,9 +381,10 @@ send_otp=()=>{
 		function(data, status){
 			if (data=="otp_verify_success") {
 				$(".otp_box").hide()
-				$(".invoice").show()
+				// $(".invoice").show()
 				$("#otp_resp_ip").val("")
 				$("#invoice_ip_1").prop('disabled', true); //once otp verified lock ph info
+				place_order()
 			}
 			else if (data=="otp_incorrect_err") {$("#otp_box_hidden_text").fadeIn(300);$("#otp_resp_ip").val("")}
 			else if (data=="otp_expired_err") {msg_box("Otp expired try again in some time");$(".otp_box").hide();$(".blocker").hide()}
@@ -423,6 +429,8 @@ place_order=()=>{
 				close_invoice()
 				msg_box("Your Order has been placed Successfully!!!")
 				$("#invoice_ip_1").prop('disabled', false);
+				localStorage.removeItem("cart");
+				switch_pg('cart')
 			}
 			else {console.log("Unk err")}
 		}

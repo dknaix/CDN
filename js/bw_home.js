@@ -4,6 +4,9 @@ $( document ).ready(function() {
 	try {parent.daddy_u_there()} //parent chk
 	catch (e) {location.replace("/404.html");return}
 	global_slider_pos=0
+
+	scroll_view("main_header_scroll_id")
+
 	loop()
 });
 

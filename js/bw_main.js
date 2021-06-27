@@ -42,6 +42,10 @@ daddy_u_there=()=>{ //frames will nt load independently
 	return true
 }
 
+scroll_view=(id)=>{document.getElementById(id).scrollIntoView();}
+
+scroll_cords=(x,y)=>{window.scrollTo(x, y)}
+
 
 birth_year=(show=true)=>{
 	// check_age_auth_cookie()
@@ -115,6 +119,7 @@ switch_pg=(page,cat="",hide_banner=false,scroll=false)=>{
 		else if (page=="cart") {
 			$(".right_display").load("cart.html")
 			left_panel_toggle()
+			scroll_view("right_display_main")
 		}
 	}
 
@@ -135,9 +140,6 @@ chk_ss=()=>{
 	console.log(localStorage.getItem("cart"))
 }
 
-
-
-scroll_view=(id)=>{document.getElementById(id).scrollIntoView();}
 
 show_login=(opr)=>{
 	if (opr=="hide") {

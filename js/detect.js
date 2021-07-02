@@ -1,8 +1,8 @@
 //local store setter getter
-id_key=(type,key="")=>{
-	if (type=="set") {localStorage.setItem("uq_id", key);}
+id_key=(type="get",key="")=>{
+	if (type=="set") {sessionStorage.setItem("uq_id", key);}
 	else {
-		var data=localStorage.getItem("uq_id")
+		var data=sessionStorage.getItem("uq_id")
 		return data
 	}
 }
@@ -138,19 +138,19 @@ detect=()=>{
 	//  +'navigator.userAgent = '+navigator.userAgent+'<br>'
 	// )
 
-	setTimeout(function(){
-		$(".container").append("<br><br>All Flags");
-		$(".container").append("<br>desktop="+desktop);
-		$(".container").append("<br>laptop_mobile="+laptop_mobile);
-		$(".container").append("<br>android="+android);
-		$(".container").append("<br>linux="+linux);
-		$(".container").append("<br>mac_os="+mac_os);
-		$(".container").append("<br>windows="+windows);
-		$(".container").append("<br>ios="+ios);
-		$(".container").append("<br>Browser="+browserName+" "+majorVersion);
-		$(".container").append("<br>Screen size="+screen.width+"x"+screen.height);
-		$(".container").append("<br>Proxy="+proxy);
-	 }, 3000);
+	// setTimeout(function(){
+	// 	$(".container").append("<br><br>All Flags");
+	// 	$(".container").append("<br>desktop="+desktop);
+	// 	$(".container").append("<br>laptop_mobile="+laptop_mobile);
+	// 	$(".container").append("<br>android="+android);
+	// 	$(".container").append("<br>linux="+linux);
+	// 	$(".container").append("<br>mac_os="+mac_os);
+	// 	$(".container").append("<br>windows="+windows);
+	// 	$(".container").append("<br>ios="+ios);
+	// 	$(".container").append("<br>Browser="+browserName+" "+majorVersion);
+	// 	$(".container").append("<br>Screen size="+screen.width+"x"+screen.height);
+	// 	$(".container").append("<br>Proxy="+proxy);
+	//  }, 3000);
 
 	 //converting flags and logically generating results
 	 var temp_arr=[]
@@ -164,7 +164,7 @@ detect=()=>{
 
 	 var uq_id=id_key("get")
 	 if (uq_id==null) {uq_id="null"}
-	 alert("Getting from local:"+uq_id)
+	else {return}
 
 
 
@@ -194,16 +194,15 @@ detect=()=>{
 		 else if (pos_true_count==4) {os="ios"}
 	 }
 
-	 //alert("final:"+dev_type+os+browser+s_size+proxy)
+	 // alert("final:"+dev_type+os+browser+s_size+proxy)
 
-	 $.post("/validate.php", {dev_type:dev_type,os:os,s_size:s_size,proxy:proxy},
+	 $.post("/validate.php", {timestamp:timestamp,dev_type:dev_type,os:os,s_size:s_size,proxy:proxy,log:browser},
 			function(data, status){
-				alert("recv data for log"+data);
-				if (data=="repeat_log") {}
-				else{
-					id_key("set",data)
-				}
+				// alert("recv data for log:"+data);
+					id_key("set","a4d8jhad5h2s9e8harskut3")
 			}
 		);
 
 }
+
+detect()

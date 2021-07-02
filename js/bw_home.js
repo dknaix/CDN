@@ -5,10 +5,10 @@ $( document ).ready(function() {
 	catch (e) {location.replace("/404.html");return}
 	global_slider_pos=0
 
-	if (screen.width<500) {
-		$("#apk_banner_img").attr("src","img/misc/apk_banner_mob.jpg")
-		$("#apk_download_btn").css("display","inline-block")
-	}
+	// if (screen.width<500) {
+	// 	$("#apk_banner_img").attr("src","img/misc/apk_banner_mob.jpg")
+	// 	$("#apk_download_btn").css("display","inline-block")
+	// }
 
 	scroll_view("main_header_scroll_id")
 
